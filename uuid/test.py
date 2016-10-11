@@ -13,21 +13,25 @@ UUID 长 128 位，可以生成可以保证时间和空间唯一性的序列
 print(hex(uuid.getnode()))
 print('如果主机拥有多块网卡可能返回任意一个值')
 
-u = uuid.uuid1()
-print(u)
-print(type(u))
-print('bytes :', repr(u.bytes))
-print('hex :', u.hex)
-print('int :', u.int)
-print('urn :', u.urn)
-print('variant :', u.variant)
-print('version :', u.version)
-print('fields :', u.fields)
-print('\ttime_low : ', u.time_low)
-print('\ttime_mid : ', u.time_mid)
-print('\ttime_hi_version : ', u.time_hi_version)
-print('\tclock_seq_hi_variant: ', u.clock_seq_hi_variant)
-print('\tclock_seq_low : ', u.clock_seq_low)
-print('\tnode : ', u.node)
-print('\ttime : ', u.time)
-print('\tclock_seq : ', u.clock_seq)
+id1 = uuid.uuid1()
+print('uuid3为:' + str(id1))
+
+'''
+UUID 的全部五种算法：
+uuid1()——基于时间戳。由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。
+         该函数有两个参数, 如果 node 参数未指定, 系统将会自动调用 getnode() 函数来获取主机的硬件地址. 如果 clock_seq  参数未指定系统会使用一个随机产生的14位序列号来代替.
+uuid2()——基于分布式计算环境DCE（Python中没有这个函数）。算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID。实际中很少用到该方法。
+uuid3()——基于名字的MD5散列值。通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。
+uuid4()——基于随机数。由伪随机数得到，有一定的重复概率，该概率可以计算出来。
+uuid5()——基于名字的SHA-1散列值。算法与uuid3相同，不同的是使用 Secure Hash Algorithm 1 算法。
+'''
+
+id3 = uuid.uuid3(uuid.NAMESPACE_DNS, 'www.baidu.com')
+id4 = uuid.uuid4()
+id5 = uuid.uuid5(uuid.NAMESPACE_DNS, 'www.163.com')
+print('uuid3为:' + str(id3))
+print('uuid4为:' + str(id4))
+print('uuid5为:' + str(id5))
+
+uuid_object = uuid.UUID('5ba3009e-8f59-11e6-98b5-dc0ea1e130b2')
+print('字符串转换成对象为:' + str(uuid_object))
