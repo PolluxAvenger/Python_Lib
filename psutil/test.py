@@ -25,4 +25,12 @@ for item in disk_info:
     print(item.mountpoint)
     print(item.fstype)
 
+# 网络信息	
+psutil.net_io_counters(pernic=True)
 
+# 用户信息
+psutil.users() # 返回当前登录用户的信息
+
+# 启动信息
+psutil.boot_time() # 获取开机时间，返回 Linux 时间戳
+datetime.datetime.fromtimestammp(psutil.boot_time()).strftime("%Y-%m-%d %H:%M:%S")
