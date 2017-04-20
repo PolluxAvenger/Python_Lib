@@ -4,7 +4,8 @@ import unicorn
 
 if __name__ == "__main__":
     # code to be emulated
-    X86_CODE32 = b'\x41\x4a' # INC ecx; DEC edx
+	# INC ecx; DEC edx
+    X86_CODE32 = b'\x41\x4a' 
 
     # memory address where emulation starts
     ADDRESS = 0x1000000
