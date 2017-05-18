@@ -8,3 +8,7 @@ print(a.ndim)
 print(a.size)
 # 数组的型
 print(a.shape)
+
+arr = np.arange(12).reshape((3, 4))
+slice_one = arr[0:2, 1:3]
+print(slice_one)
