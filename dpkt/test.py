@@ -11,3 +11,6 @@ if __name__=="__main__":
         for timestamp, buf in pcap:
             count += 1
             eth = dpkt.ethernet.Ethernet(buf)
+			
+			if not isinstance(eth.data, dpkt.ip.IP):
+                continue
