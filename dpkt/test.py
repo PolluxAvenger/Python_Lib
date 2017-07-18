@@ -14,3 +14,5 @@ if __name__=="__main__":
 			
 			if not isinstance(eth.data, dpkt.ip.IP):
                 continue
+				
+			ip = eth.data
