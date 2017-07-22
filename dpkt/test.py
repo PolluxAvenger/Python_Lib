@@ -16,3 +16,6 @@ if __name__=="__main__":
                 continue
 				
 			ip = eth.data
+			
+			if isinstance(ip.data, dpkt.tcp.TCP):
+                tcp = ip.data
